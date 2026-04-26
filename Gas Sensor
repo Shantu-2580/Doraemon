@@ -1,0 +1,14 @@
+int gasSensor = A0;   // Gas sensor connected to analog pin A0
+
+void setup() {
+  Serial.begin(9600);   // Start serial communication
+}
+
+void loop() {
+  int sensorValue = analogRead(gasSensor);  // Read gas value
+
+  Serial.print("Gas Value: ");
+  Serial.println(sensorValue);  // Display on serial monitor
+
+  delay(1000);  // 1 second delay
+}

@@ -1,0 +1,194 @@
+🔴 EXP 1 – UART PRINTING
+✅ Algorithm
+Start
+Initialize system clock (HIRC 24 MHz)
+Configure UART communication (baud rate = 115200)
+Enable UART transmission
+Enter infinite loop
+Send string data using printf()
+Apply delay using timer
+Repeat steps 5–7
+Stop
+
+🔴 EXP 2 – BUZZER
+✅ Algorithm
+Start
+Configure GPIO port as output
+Enter infinite loop
+Set GPIO LOW → buzzer ON
+Apply delay
+Set GPIO HIGH → buzzer OFF
+Apply delay
+Repeat steps 4–7
+Stop
+
+🔴 EXP 3 – LED BLINKING
+✅ Algorithm
+Start
+Configure LED pin as OUTPUT
+Enter infinite loop
+Set LED HIGH (ON)
+Apply delay
+Set LED LOW (OFF)
+Apply delay
+Repeat steps 4–7
+Stop
+
+🔴 EXP 4 – ADC (LDR + POT)
+✅ Algorithm
+Start
+Initialize ADC module
+Select ADC channel (LDR / Potentiometer)
+Initialize UART for output
+Enter infinite loop
+Start ADC conversion
+Wait until conversion completes
+Read digital value from ADC register
+Display value on serial monitor
+Apply delay
+Repeat steps 6–10
+Stop
+
+🔴 EXP 5 – TWO LEDS USING RTOS
+✅ Algorithm
+Start
+Initialize system and FreeRTOS
+Create Task 1 (LED1 control)
+Create Task 2 (LED2 control)
+Start scheduler
+Task 1:
+Set LED1 HIGH
+Delay
+Set LED1 LOW
+Delay
+Task 2:
+Set LED2 HIGH
+Delay
+Set LED2 LOW
+Delay
+Scheduler switches between tasks
+Repeat continuously
+Stop
+
+🔴 EXP 6 – LED BRIGHTNESS (PWM)
+✅ Algorithm
+(A) WITH RTOS
+Start
+Initialize FreeRTOS
+Create task for LED brightness control
+Start scheduler
+In task:
+Initialize brightness = 0
+Increase brightness gradually
+Apply PWM using analogWrite()
+Delay
+Reset when max reached
+Repeat continuously
+Stop
+(B) WITHOUT RTOS
+Start
+Configure LED pin as OUTPUT
+Initialize brightness variable
+Enter loop
+Increase brightness
+Apply PWM
+Add delay
+Decrease brightness
+Repeat steps 5–8
+Stop
+
+🔴 EXP 7 – BINARY SEMAPHORE
+✅ Algorithm
+Start
+Initialize FreeRTOS
+Create binary semaphore
+Initialize semaphore as available
+Create multiple tasks
+Start scheduler
+For each task:
+Request semaphore (xSemaphoreTake)
+Enter critical section
+Execute task
+Release semaphore (xSemaphoreGive)
+Delay
+Scheduler switches tasks
+Repeat continuously
+Stop
+
+🔴 EXP 8 – TASK PRIORITY SCHEDULING
+✅ Algorithm
+Start
+Initialize FreeRTOS
+Create multiple tasks
+Assign different priorities to each task
+Start scheduler
+Scheduler selects highest priority task
+Execute selected task
+If higher priority task arrives → preempt current task
+Continue scheduling based on priority
+Repeat continuously
+Stop
+
+🔴 1. ULTRASONIC SENSOR (HC-SR04)
+✅ Algorithm
+Start
+Initialize TRIG pin as OUTPUT
+Initialize ECHO pin as INPUT
+Initialize serial communication
+Enter infinite loop
+Set TRIG LOW for stabilization
+Send HIGH pulse (10 µs) to TRIG
+Wait for ECHO pin to go HIGH
+Measure time duration of ECHO signal
+Calculate distance:
+👉 Distance = (Time × Speed of Sound) / 2
+Display distance on serial monitor
+Apply delay
+Repeat steps 6–12
+Stop
+
+🔴 2. GAS SENSOR (MQ Series)
+✅ Algorithm
+Start
+Connect gas sensor output pin to Arduino input pin
+Initialize serial communication
+Set sensor pin as INPUT
+Enter infinite loop
+Read sensor value (analog/digital)
+Compare value with threshold
+If value > threshold → Gas detected
+Else → No gas detected
+Display result on serial monitor
+Apply delay
+Repeat steps 6–11
+Stop
+
+🔴 3. IR SENSOR (Obstacle Detection)
+✅ Algorithm
+Start
+Initialize IR sensor pin as INPUT
+Initialize serial communication
+Enter infinite loop
+Read IR sensor output
+If output = LOW → Object detected
+Else → No object detected
+Display result on serial monitor
+Apply delay
+Repeat steps 5–9
+Stop
+
+
+🔴 4. DHT11 (Temperature + Humidity)
+✅ Algorithm
+Start
+Initialize DHT11 sensor
+Initialize serial communication
+Enter infinite loop
+Read humidity value
+Read temperature value
+Check if readings are valid
+If invalid → display error
+Else → display temperature & humidity
+Apply delay (2 seconds)
+Repeat steps 5–10
+Stop

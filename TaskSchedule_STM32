@@ -1,0 +1,61 @@
+#include <Arduino.h>
+#include <FreeRTOS.h>
+#include <task.h>
+#define LED_PIN_1 PA5 // Define LED pin for Task 1
+#define LED_PIN_2 PA6 // Define LED pin for Task 2
+#define LED_PIN_3 PA7 // Define LED pin for Task 3
+TaskHandle_t task Handle;
+TaskHandle_t task2Handle;
+TaskHandle_t task Handle;
+void task1(void *pvParameters)
+{ pinMode(LED_PIN_1, OUTPUT);
+pinMode(LED_PIN_2, OUTPUT);
+pinMode(LED_PIN_3, OUTPUT);
+while (1) {
+digitalWrite(LED_PIN_1, HIGH);
+digitalWrite(LED_PIN_2, LOW);
+digitalWrite(LED_PIN_3, LOW); 
+Serial.print("Task 1 is running, Priority: ");
+Serial.println(uxTaskPriorityGet(NULL));
+vTaskDelay(1000);
+digitalWrite(LED_PIN_1, LOW);
+vTaskDelay(2000);
+}}
+void task2(void *pvParameters)
+{
+pinMode(LED_PIN_1, OUTPUT);
+pinMode(LED_PIN_2, OUTPUT);
+pinMode(LED_PIN_3, OUTPUT);
+while (1) {
+digitalWrite(LED_PIN_1, LOW);
+digitalWrite(LED_PIN_2, HIGH);
+digitalWrite(LED_PIN_3, LOW);
+Serial.print("Task 2 is running, Priority: ");
+Serial.println(uxTaskPriorityGet(NULL));
+vTaskDelay(1000);
+digitalWrite(LED_PIN_2, LOW);
+vTaskDelay(3000);
+}}
+void task3(void *pvParameters)
+{
+pinMode(LED_PIN_1, OUTPUT);
+pinMode(LED_PIN_2, OUTPUT);
+pinMode(LED_PIN_3, OUTPUT);
+while (1) {
+digitalWrite(LED_PIN_1, LOW);
+digitalWrite(LED_PIN_2, LOW);
+digitalWrite(LED_PIN_3, HIGH);
+Serial.print("Task 3 is running, Priority: ");
+Serial.println(uxTaskPriorityGet(NULL));
+vTaskDelay(1000);
+digitalWrite(LED_PIN_3, LOW); 
+vTaskDelay(4000);
+}}
+void setup()
+{ Serial.begin(9600);
+xTaskCreate(task1, "Task 1", 500, NULL, 3, task Handle); // Highest priority
+xTaskCreate(task2, "Task 2", 500, NULL, 2, &task Handle);
+xTaskCreate(task3, "Task 3", 500, NULL, 1, &task Handle); // Lowest priority
+vTaskStartScheduler();
+}
+void loop() {} 

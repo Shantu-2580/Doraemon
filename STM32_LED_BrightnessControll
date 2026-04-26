@@ -1,0 +1,29 @@
+#include <Arduino.h>
+#include <FreeRTOS.h>
+#include <task.h>
+#define LED_PIN_1 PA5
+#define INITIAL_DELAY_MS 500 // Initial delay in milliseconds
+#define MAX_COUNT 10 // Maximum count for brightness increase
+
+TaskHandle_t task1Handle;
+TaskHandle_t task2Handle;
+
+void task1(void *pvParameters)
+{
+int brightness = 0;
+int count = 0;
+int delay_ms = INITIAL_DELAY_MS;
+pinMode(LED_PIN_1, OUTPUT);
+while (1){
+analogWrite(LED_PIN_1, brightness); // Set brightness of LED for Task 1 
+delay(delay_ms); 
+brightness += 255 / MAX_COUNT; 
+if (brightness > 255) {brightness =0;count++;}
+if (count >= MAX_COUNT){count = 0;delay_ms = INITIAL_DELAY_MS;} } }
+void setup()
+{
+Serial.begin(9600);
+xTaskCreate(task1, "Task 1", 1000, NULL, 1, task
+Handle);vTaskStartScheduler();
+}
+void loop() {} 

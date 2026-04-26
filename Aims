@@ -1,0 +1,60 @@
+🔴 EXPERIMENT 1
+
+👉 Aim:
+To print data using UART function for an embedded system.
+
+🔴 EXPERIMENT 2
+
+👉 Aim:
+To run an onboard buzzer for alarming purposes using MS-51 board.
+
+🔴 EXPERIMENT 3
+
+👉 Aim:
+To implement onboard LED blinking using Nuvoton 8051 board.
+
+🔴 EXPERIMENT 4
+
+👉 Aim:
+To interface ADC with an embedded system using LDR and potentiometer.
+
+🔴 EXPERIMENT 5
+
+👉 Aim:
+To blink two LEDs simultaneously on STM32 NUCLEO board using FreeRTOS.
+
+🔴 EXPERIMENT 6
+
+👉 Aim:
+To change the brightness of LEDs on STM32 with and without FreeRTOS.
+
+🔴 EXPERIMENT 7
+
+👉 Aim:
+To implement binary semaphore for task synchronization using FreeRTOS.
+
+🔴 EXPERIMENT 8
+
+👉 Aim:
+To create and schedule tasks based on priority using STM32 and FreeRTOS.
+
+🔴 ADDITIONAL LABS
+🌡️ Temperature & Humidity Sensor (DHT11)
+
+👉 Aim:
+To measure temperature and humidity using DHT11 sensor and display the readings.
+
+📏 Ultrasonic Sensor
+
+👉 Aim:
+To measure distance using an ultrasonic sensor and display the result.
+
+🧪 Gas Sensor
+
+👉 Aim:
+To detect the presence of gas using a gas sensor and display the output.
+
+🔴 IR Sensor
+
+👉 Aim:
+To detect the presence of an object using an IR sensor.

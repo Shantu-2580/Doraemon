@@ -22,3 +22,30 @@ void setup()
 {xTaskCreate(task1, "Task1", 100, NULL, 1, NULL);xTaskCreate(task2, "Task2", 100, NULL,
 2, NULL);vTaskStartScheduler();}
 void loop() {} 
+
+
+
+
+
+//Without FreeRTOS
+#include <Arduino.h>
+#define LED_PIN PA5
+
+void setup() {
+pinMode(LED_PIN, OUTPUT);
+}
+void loop()
+{
+static int brightness = 0;
+static bool increasing = true;
+static int count = 10000; // Initial count value
+analogWrite(LED_PIN, brightness); 
+if (increasing) {
+brightness += 20; 
+if (brightness >= 255) {
+increasing = false;
+}}
+else {brightness -= 20; if (brightness <= 0) {increasing = true;count--;} }
+delayMicroseconds(count);
+if (count <= 10000) {count = 100000;}
+} 

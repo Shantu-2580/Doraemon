@@ -1,0 +1,24 @@
+#include <FreeRTOS.H>
+#include <task.h>
+// Define LED pins
+#define LED1_PIN PA5
+#define LED2_PIN PA6
+#define TASK1_DELAY 500
+#define TASK2_DELAY 2000
+void task1(void *pvParameters)
+{
+(void)pvParameters; pinMode(LED1_PIN, OUTPUT);
+while (1)
+{digitalWrite(LED1_PIN, HIGH);vTaskDelay(pdMS_TO_TICKS(TASK1_DELAY));
+digitalWrite(LED1_PIN, LOW);vTaskDelay(pdMS_TO_TICKS(TASK1_DELAY));}
+}
+void task2(void *pvParameters) {
+(void)pvParameters; pinMode(LED2_PIN, OUTPUT);
+while (1)
+{digitalWrite(LED2_PIN, HIGH);vTaskDelay(pdMS_TO_TICKS(TASK2_DELAY));
+digitalWrite(LED2_PIN, LOW);vTaskDelay(pdMS_TO_TICKS(TASK2_DELAY));}
+}
+void setup()
+{xTaskCreate(task1, "Task1", 100, NULL, 1, NULL);xTaskCreate(task2, "Task2", 100, NULL,
+2, NULL);vTaskStartScheduler();}
+void loop() {} 

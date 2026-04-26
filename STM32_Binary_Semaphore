@@ -1,0 +1,50 @@
+#include <Arduino.h>
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
+SemaphoreHandle_t taskSemaphore;
+void task1(void *pvParameters) {
+while (1) {
+Serial.println("Task 1 Entered");
+xSemaphoreTake(taskSemaphore, portMAX_DELAY);
+Serial.println("Task 1 Executing");
+delay(1000);
+xSemaphoreGive(taskSemaphore);
+Serial.println("Task 1 Left");
+vTaskDelay(2000);
+}
+}
+void task2(void *pvParameters) { 
+while (1) {
+Serial.println("Task 2 Entered");
+xSemaphoreTake(taskSemaphore, portMAX_DELAY);
+Serial.println("Task 2 Executing");
+delay(1500);
+xSemaphoreGive(taskSemaphore);
+Serial.println("Task 2 Left");
+vTaskDelay(3000);
+}
+}
+void task3(void *pvParameters) {
+while (1) {
+Serial.println("Task 3 Entered");
+xSemaphoreTake(taskSemaphore, portMAX_DELAY);
+Serial.println("Task 3 Executing");
+delay(2000);
+xSemaphoreGive(taskSemaphore);
+Serial.println("Task 3 Left");
+vTaskDelay(4000);
+}
+}
+void setup() {
+Serial.begin(9600);
+taskSemaphore = xSemaphoreCreateBinary();
+xSemaphoreGive(taskSemaphore); // Initialize semaphore to be available
+xTaskCreate(task1, "Task 1", 1000, NULL, 1, NULL);
+xTaskCreate(task2, "Task 2", 1000, NULL, 2, NULL);
+xTaskCreate(task3, "Task 3", 1000, NULL, 3, NULL);
+vTaskStartScheduler();
+}
+void loop() {
+// Empty loop, tasks are scheduled by the FreeRTOS scheduler
+} 
